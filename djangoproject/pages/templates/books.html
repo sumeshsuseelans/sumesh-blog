@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Book {% endblock %}
+
+
+{% block content %}
+<!-- Container (The Band Section) -->
+
+<div id="band" class="container text-center">
+  <h3>Books</h3>
+  <p><em>I love reading fictional books!</em></p>
+  <p>To begin with i am not Bibliophile. I love to read books now and then. I have enjoyed reading few books and i have mentioned few of them below .Looking forward to read a lot!! </p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Man's search for meaning</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="{% static 'img/man_search_for_meaning.jpg' %}" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p><b>Author :</b> Viktor Frankl</p>
+        <p>Man's Search for Meaning is a 1946 book by Viktor Frankl chronicling his experiences as an Auschwitz concentration camp inmate during World War II</p>
+         <p><b>Pages :</b> 250</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>I am malala</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="{% static 'img/malala.jpg' %}" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+         <p><b>Author :</b> Malala Yousafzai, Christina Lamb</p>
+        <p>I Am Malala: The Story of the Girl Who Stood Up for Education and Was Shot by the Taliban is an autobiographical book by Malala Yousafzai, co-written with Christina Lamb</p>
+         <p><b>Pages :</b> 350</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Courage: The Joy of Living Dangerously</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="{% static 'img/courage.jpg' %}" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+          <p><b>Author :</b> Osho</p>
+        <p>Discover your ability to be brave in times of adversity with Courage: The Joy of Living Dangerously—from one of the greatest spiritual teachers of the twentieth century</p>
+         <p><b>Pages :</b> 350</p>
+      </div>
+    </div>
+      <div class="col-sm-4">
+      <p class="text-center"><strong>The Alchimest</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="{% static 'img/alchimest.jpg' %}" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+          <p><b>Author :</b> Paulo Coelho</p>
+        <p>The Alchemist follows the journey of an Andalusian shepherd boy named Santiago. Believing a recurring dream to be prophetic, he asks a Romani fortune teller in a nearby town about its meaning. The woman interprets the dream as a prophecy telling the boy that he will discover a treasure at the Egyptian pyramids.</p>
+         <p><b>Pages :</b> 350</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</br>
+</br>
+</br>
+
+<!-- Container (Contact Section) -->
+ <p class="text-center"><em><b>Suggestions!!!</b></em></p>
+<div class="container">
+  {% if all_comments %}
+  {% for comment in all_comments %}
+  <p><span><b>Name : Anonymous</b></span> Email : Hidden</p>
+  <p>{{comment.comment}}</p>
+  {% endfor %}
+{% endif %}
+</div>
+
+<form method="POST">
+  {% csrf_token %}
+<div id="contact" class="container">
+  <h3 class="text-left">Contact</h3>
+  <p class="text-center"><em><b>Comments Please</b></em></p>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>Any suggestions? Drop a comments</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Bangalore, India</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Phone: +91 7550103110</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: sumeshuseelan.ss@gmail.com</p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comment" placeholder="Comment" rows="5" ></textarea>
+      <br>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button class="btn pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br> 
+  </form>
+
+
+
+
+{% endblock %}

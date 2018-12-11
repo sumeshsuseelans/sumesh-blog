@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Welcome to Sumesh Suseelan's Page {% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+	
+<div class="card" style="width: 25rem;">
+  <img class="card-img-top" src="{% static 'img/sumesh.png' %}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Sumesh Suseelan</h5>
+    <p class="card-text">This is my personal blog!!! Feel free to follow ...</p>
+    <a href="{% url 'about' %}" class="btn btn-dark">About</a>
+  </div>
+</div>
+
+</br>
+<div class="card" style="width: 25rem;">
+  <img class="card-img-top" src="{% static 'img/books_collage.png' %}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Books</h5>
+    <p class="card-text">Please click on below to find my taste in books</p>
+    <a href="{% url 'books' %}" class="btn btn-dark">Books..</a>
+  </div>
+</div>
+
+</br>
+<div class="card" style="width: 25rem;">
+  <img class="card-img-top" src="{% static 'img/movie_collage.jpg' %}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Movies</h5>
+    <p class="card-text">Please click on below to find my taste in movies</p>
+    <a href="{% url 'movies' %}" class="btn btn-dark">Movies..</a>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

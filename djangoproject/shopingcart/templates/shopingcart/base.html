@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+  {% load static %}
+
+
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static 'shopingcart/css/bootstrap.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'shopingcart/css/bootstrap.min.css' %}" />
+<script type="text/javascript" src="{% static 'shopingcart/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'shopingcart/js/bootstrap.js' %}"></script>
+<link rel="icon" type="image" href="{% static 'shopingcart/img/msit.png' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'shopingcart/css/styles.css' %}" />
+
+
+	{%block script%}{%endblock%}
+	{%block styles%}{%endblock%}
+</head>
+<body>
+  <header>
+  {% if  request.session.username %}
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'Ecomhome' %}">JOHN'S RECIEPE</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+          <li class="nav-item">
+            <a href="{% url 'shopingcart:cart' %}" class="nav-link" id="CART">CART({{request.session.cart_items}})</a>
+          </li>
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{request.session.username}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'shopingcart:logout' %}">Logout</a>
+        </div>
+      </li>
+        </ul>
+      </div>
+    </nav>
+    {% else %}
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="{% url 'shopingcart:login' %}">MSIT Shopping App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+      </div>
+    </nav>
+    {% endif %}
+  </header>
+    <div class="container" style="padding-top: 10px">
+		{%block body%}{%endblock%}
+	</div>
+</body>
+</html>
